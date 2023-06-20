@@ -1,34 +1,24 @@
-const cart = [
-  {
-    id: 1,
-    name: "Laptop",
-    price: 50000,
-    quantity: 1,
-  },
-  {
-    id: 2,
-    name: "Mobile",
-    price: 10000,
-    quantity: 1,
-  },
-  {
-    id: 3,
-    name: "TV",
-    price: 20000,
-    quantity: 1,
-  },
-  {
-    id: 4,
-    name: "Headphone",
-    price: 5000,
-    quantity: 1,
-  },
-  {
-    id: 5,
-    name: "Laptop",
-    price: 50000,
-    quantity: 2,
-  },
-];
+// const cart = [];
+
+// export const addToCart = (item) => {
+//   cart.push(item);
+// };
+
+// export default cart;
+
+const cart = [];
+
+export const addToCart = (item) => {
+  const existingItemIndex = cart.findIndex(
+    (cartItem) => cartItem.id === item.id
+  );
+
+  if (existingItemIndex !== -1) {
+    cart[existingItemIndex].quantity += 1;
+  } else {
+    const newItem = { ...item, quantity: 1 };
+    cart.push(newItem);
+  }
+};
 
 export default cart;
